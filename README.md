@@ -1,6 +1,7 @@
 # Bekmukhametova Kamilla — Student API
 
-Spring Boot CRUD application with PostgreSQL, Docker and Jenkins by Kamilla Bekmukhametova.
+Spring Boot CRUD REST API for student records with PostgreSQL, Docker and Jenkins.
+Author and documentation maintainer: Kamilla Bekmukhametova.
 
 Author: **Kamilla Bekmukhametova**
 
