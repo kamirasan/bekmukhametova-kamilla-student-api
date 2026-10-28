@@ -1,6 +1,6 @@
 # Bekmukhametova Kamilla — Student API
 
-Spring Boot CRUD application for managing students (DevOps midterm project).
+Spring Boot REST API for student records. Documentation maintained by Kamilla Bekmukhametova.
 
 Author: **Kamilla Bekmukhametova**
 
