@@ -37,4 +37,26 @@ public class StudentController {
         student.setId(null);
         return repository.save(student);
     }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<Student> update(@PathVariable Long id, @Valid @RequestBody Student updated) {
+        return repository.findById(id)
+                .map(existing -> {
+                    existing.setFirstName(updated.getFirstName());
+                    existing.setLastName(updated.getLastName());
+                    existing.setEmail(updated.getEmail());
+                    existing.setGroupName(updated.getGroupName());
+                    return ResponseEntity.ok(repository.save(existing));
+                })
+                .orElse(ResponseEntity.notFound().build());
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> delete(@PathVariable Long id) {
+        if (!repository.existsById(id)) {
+            return ResponseEntity.notFound().build();
+        }
+        repository.deleteById(id);
+        return ResponseEntity.noContent().build();
+    }
 }
