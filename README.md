@@ -1,6 +1,6 @@
 # Bekmukhametova Kamilla — Student API
 
-Spring Boot CRUD application for managing students (DevOps midterm project).
+Spring Boot CRUD application with PostgreSQL, Docker and Jenkins by Kamilla Bekmukhametova.
 
 Author: **Kamilla Bekmukhametova**
 
