@@ -3,7 +3,7 @@
 Spring Boot CRUD REST API for student records with PostgreSQL, Docker and Jenkins.
 Author and documentation maintainer: Kamilla Bekmukhametova.
 
-Author: **Kamilla Bekmukhametova**
+Author: **Kamilla Bekmukhametova** (GitHub: kamirasan)
 
 ## Changes by Kamilla Bekmukhametova (feature/bekmukhametova-kamilla-crud)
 
