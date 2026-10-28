@@ -1,0 +1,44 @@
+name: bekmukhametova-kamilla-student-api
+
+services:
+  db:
+    image: postgres:16-alpine
+    container_name: bekmukhametova-kamilla-postgres
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB}
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+    volumes:
+      - bekmukhametova_pgdata:/var/lib/postgresql/data
+    networks:
+      - bekmukhametova-net
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER} -d ${POSTGRES_DB}"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  app:
+    build: .
+    image: bekmukhametova-kamilla-student-api:v${APP_VERSION}-bekmukhametova-kamilla
+    container_name: bekmukhametova-kamilla-app
+    environment:
+      # "db" is the Compose service name — resolved by Docker DNS inside the network
+      SPRING_DATASOURCE_URL: jdbc:postgresql://db:5432/${POSTGRES_DB}
+      SPRING_DATASOURCE_USERNAME: ${POSTGRES_USER}
+      SPRING_DATASOURCE_PASSWORD: ${POSTGRES_PASSWORD}
+      APP_VERSION: ${APP_VERSION}
+    ports:
+      - "8080:8080"
+    depends_on:
+      db:
+        condition: service_healthy
+    networks:
+      - bekmukhametova-net
+
+volumes:
+  bekmukhametova_pgdata:
+
+networks:
+  bekmukhametova-net:
+    driver: bridge
